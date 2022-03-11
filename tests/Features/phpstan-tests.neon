@@ -1,0 +1,11 @@
+includes:
+  - ../../vendor/phpstan/phpstan/conf/bleedingEdge.neon
+
+services:
+  - class: Soyhuce\PhpstanExtension\ReturnTypes\DateExtension
+    tags:
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+
+  - class: Soyhuce\PhpstanExtension\ReturnTypes\NowAndTodayExtension
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
