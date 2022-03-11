@@ -2,9 +2,9 @@
 
 namespace Soyhuce\PhpstanExtension;
 
+use Soyhuce\PhpstanExtension\Commands\PhpstanExtensionCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Soyhuce\PhpstanExtension\Commands\PhpstanExtensionCommand;
 
 class PhpstanExtensionServiceProvider extends PackageServiceProvider
 {
