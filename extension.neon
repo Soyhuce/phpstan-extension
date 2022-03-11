@@ -1,0 +1,15 @@
+services:
+  - class: Soyhuce\PhpstanExtension\ReturnTypes\DateExtension
+    tags:
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+
+  - class: Soyhuce\PhpstanExtension\ReturnTypes\NowAndTodayExtension
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+
+rules:
+  - Soyhuce\PhpstanExtension\Rules\CarbonCopyRule
+  - Soyhuce\PhpstanExtension\Rules\NoAliasUseRule
+  - Soyhuce\PhpstanExtension\Rules\NoMutableDateTimeStaticCallRule
+  - Soyhuce\PhpstanExtension\Rules\NoMutableDateTimeUseRule
+  - Soyhuce\PhpstanExtension\Rules\NoNewMutableDateTimeRule

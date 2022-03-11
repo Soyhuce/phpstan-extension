@@ -1,8 +1,6 @@
 <?php declare(strict_types=1);
 
 $finder = PhpCsFixer\Finder::create()->in([
-    'config',
-    'database',
     'src',
     'tests',
 ]);
@@ -94,7 +92,7 @@ return (new PhpCsFixer\Config())->setRules([
     /*
      * Class Usage
      */
-    'date_time_immutable' => true, // risky
+    'date_time_immutable' => false, // risky
     /*
      * Comment
      */
@@ -177,7 +175,7 @@ return (new PhpCsFixer\Config())->setRules([
      * Import
      */
     'fully_qualified_strict_types' => true,
-    'global_namespace_import' => ['import_constants' => false, 'import_functions' => true, 'import_classes' => true],
+    'global_namespace_import' => ['import_constants' => false, 'import_functions' => true, 'import_classes' => null],
     'group_import' => false,
     'no_leading_import_slash' => true,
     'no_unneeded_import_alias' => true,
