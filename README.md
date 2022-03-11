@@ -6,47 +6,114 @@
 [![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/soyhuce/phpstan-extension/PHPStan?label=phpstan)](https://github.com/soyhuce/phpstan-extension/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/phpstan-extension.svg?style=flat-square)](https://packagist.org/packages/soyhuce/phpstan-extension)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Strict rules for PHPStan and helpers for Laravel
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require soyhuce/phpstan-extension
+composer require --dev soyhuce/phpstan-extension
 ```
 
-You can publish and run the migrations with:
+If you use `phpstan/extension-installer`, the extension is automatically installed and you're all set.
 
-```bash
-php artisan vendor:publish --tag="phpstan-extension-migrations"
-php artisan migrate
+Otherwise, you need to add the extension in your `phpstan.neon` file:
+
+```neon
+includes:
+  - ./vendor/soyhuce/phpstan-extension/extension.neon
 ```
 
-You can publish the config file with:
+If you want only a subset of the rules, check the `/vendor/soyhuce/phpstan-extension/extension.neon` file and copy the
+rules you want to use.
 
-```bash
-php artisan vendor:publish --tag="phpstan-extension-config"
-```
+## Rules
 
-This is the contents of the published config file:
+### CarbonCopyRule
+
+Forbids usage of `\Carbon\CarbonInterface::copy()` because it is probably linked to usage of a mutable DateTime.
 
 ```php
-return [
-];
+<?php
+
+$datetime->copy()->addDay(); // ko
+$datetime->addDay(); // ok
 ```
 
-Optionally, you can publish the views using
+### NoAliasUseRule
 
-```bash
-php artisan vendor:publish --tag="phpstan-extension-views"
-```
-
-## Usage
+Forbids usage of Laravel aliases and suggests to use the real class name instead.
 
 ```php
-$phpstanExtension = new Soyhuce\PhpstanExtension();
-echo $phpstanExtension->echoPhrase('Hello, Soyhuce!');
+<?php
+
+use Auth; // ko
+use Illuminate\Support\Facades\Auth; // ok
+```
+
+### NoMutableDateTimeStaticCallRule
+
+Forbids usage of static methods on `\DateTime` and its child classes.
+
+```php
+<?php
+
+\Illuminate\Support\Carbon::create($year, $month, $day); // ko
+\Illuminate\Support\Facade\Date::create($year, $month, $day); // ok
+\Carbon\CarbonImmutable::create($year, $month, $day); // ok
+```
+
+### NoMutableDateTimeUseRule
+
+Forbids import of `\DateTime` and its child classes.
+
+```php
+<?php
+
+use Illuminate\Support\Carbon; // ko
+use Carbon\Carbon; // ko
+use Carbon\CarbonInterface; // ok
+use Carbon\ImmutableCarbon; // ok
+```
+
+### NoNewMutableDateTimeRule
+
+Forbids usage of `new \DateTime()` and its child classes.
+
+```php
+<?php
+
+$dateTime = new Illuminate\Support\Carbon($date); // ko
+$dateTime = new Carbon\Carbon($date); // ko
+$dateTime = new Carbon\ImmutableCarbon($date); // ok
+```
+
+## Extensions
+
+### DateExtension
+
+Provides return type for various `Illuminate\Support\Facades\Date` methods
+
+```php
+use Carbon\FactoryImmutable;
+use Illuminate\Support\Facades\Date;
+
+Date::use(FactoryImmutable::class);
+Date::create(2020, 1, 1); // CarbonImmutable
+Date::createFromFormat('Y-m-d', '2020-01-01'); // CarbonImmutable|false
+```
+
+### NowAndTodayExtension
+
+Provides return type for `now()` and `today()` helpers.
+
+```php
+use Carbon\FactoryImmutable;
+use Illuminate\Support\Facades\Date;
+
+Date::use(FactoryImmutable::class);
+now(); // CarbonImmutable
 ```
 
 ## Testing
