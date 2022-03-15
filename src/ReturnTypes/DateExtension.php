@@ -37,7 +37,6 @@ class DateExtension implements DynamicStaticMethodReturnTypeExtension
                 'fromSerialized',
                 'getTestNow',
                 'instance',
-                'isMutable',
                 'maxValue',
                 'minValue',
                 'now',
