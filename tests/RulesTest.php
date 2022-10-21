@@ -2,15 +2,18 @@
 
 namespace Soyhuce\PhpstanExtension\Tests;
 
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDeprecationHandling;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class RulesTest extends Orchestra
 {
     use ExecutesLarastan;
+    use InteractsWithDeprecationHandling;
 
     protected function setUp(): void
     {
         parent::setUp();
+        $this->withoutDeprecationHandling();
 
         $this->configPath = __DIR__ . '/phpstan-tests.neon';
     }
