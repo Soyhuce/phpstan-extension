@@ -10,6 +10,10 @@ services:
     tags:
       - phpstan.broker.dynamicFunctionReturnTypeExtension
 
+  - class: Soyhuce\PhpstanExtension\ReturnTypes\RequestDateExtension
+    tags:
+      - phpstan.broker.dynamicMethodReturnTypeExtension
+
 parameters:
   bootstrapFiles:
     - bootstrap.php

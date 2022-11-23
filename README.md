@@ -116,6 +116,18 @@ Date::use(FactoryImmutable::class);
 now(); // CarbonImmutable
 ```
 
+### RequestDateExtension
+
+Provides return type for `\Illuminate\Support\Request::date()` method.
+
+```php
+use Carbon\FactoryImmutable;
+use Illuminate\Support\Facades\Date;
+
+Date::use(FactoryImmutable::class);
+$request->date('published_at'); // CarbonImmutable|null
+```
+
 ## Testing
 
 ```bash
