@@ -91,31 +91,6 @@ $dateTime = new Carbon\ImmutableCarbon($date); // ok
 
 ## Extensions
 
-### DateExtension
-
-Provides return type for various `Illuminate\Support\Facades\Date` methods
-
-```php
-use Carbon\FactoryImmutable;
-use Illuminate\Support\Facades\Date;
-
-Date::use(FactoryImmutable::class);
-Date::create(2020, 1, 1); // CarbonImmutable
-Date::createFromFormat('Y-m-d', '2020-01-01'); // CarbonImmutable|false
-```
-
-### NowAndTodayExtension
-
-Provides return type for `now()` and `today()` helpers.
-
-```php
-use Carbon\FactoryImmutable;
-use Illuminate\Support\Facades\Date;
-
-Date::use(FactoryImmutable::class);
-now(); // CarbonImmutable
-```
-
 ### RequestDateExtension
 
 Provides return type for `\Illuminate\Support\Request::date()` method.
