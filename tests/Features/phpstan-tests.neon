@@ -9,3 +9,7 @@ services:
   - class: Soyhuce\PhpstanExtension\ReturnTypes\NowAndTodayExtension
     tags:
       - phpstan.broker.dynamicFunctionReturnTypeExtension
+
+  - class: Soyhuce\PhpstanExtension\ReturnTypes\RequestDateExtension
+    tags:
+      - phpstan.broker.dynamicMethodReturnTypeExtension
