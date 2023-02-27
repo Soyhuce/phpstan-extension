@@ -2,6 +2,15 @@
 
 All notable changes to `phpstan-extension` will be documented in this file.
 
+## 0.4.0 - 2023-02-27
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/12
+- Laravel 10 support by @bastien-phi in https://github.com/Soyhuce/phpstan-extension/pull/13
+
+**Full Changelog**: https://github.com/Soyhuce/phpstan-extension/compare/0.3.0...0.4.0
+
 ## 0.3.0 - 2023-02-27
 
 ### What's Changed
