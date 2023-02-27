@@ -2,6 +2,17 @@
 
 All notable changes to `phpstan-extension` will be documented in this file.
 
+## 0.3.0 - 2023-02-27
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/8
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/9
+- Add extension for return type of Request::date by @bastien-phi in https://github.com/Soyhuce/phpstan-extension/pull/10
+- Remove extensions integrated in Larastan by @bastien-phi in https://github.com/Soyhuce/phpstan-extension/pull/11
+
+**Full Changelog**: https://github.com/Soyhuce/phpstan-extension/compare/0.2.0...0.3.0
+
 ## 0.2.0 - 2022-10-21
 
 ### What's Changed
