@@ -24,7 +24,7 @@ trait ExecutesLarastan
             $jsonResult
         );
 
-        return json_decode($jsonResult[0], true);
+        return json_decode($jsonResult[0], true, 512, JSON_THROW_ON_ERROR);
     }
 
     private function analyze(string $file): int

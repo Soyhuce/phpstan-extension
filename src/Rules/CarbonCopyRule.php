@@ -47,9 +47,7 @@ class CarbonCopyRule implements Rule
             $scope,
             $node->var,
             '',
-            static function (Type $type) use ($name): bool {
-                return $type->canCallMethods()->yes() && $type->hasMethod($name)->yes();
-            }
+            static fn (Type $type): bool => $type->canCallMethods()->yes() && $type->hasMethod($name)->yes()
         );
 
         $type = $typeResult->getType();
