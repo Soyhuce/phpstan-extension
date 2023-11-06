@@ -21,7 +21,7 @@ class FeatureTest extends Orchestra
         $this->configPath = __DIR__ . '/Features/phpstan-tests.neon';
     }
 
-    public function getFeatures(): array
+    public static function getFeatures(): array
     {
         $calls = [];
         $baseDir = __DIR__ . DIRECTORY_SEPARATOR . 'Features' . DIRECTORY_SEPARATOR;

@@ -37,8 +37,6 @@ abstract class RulesTest extends Orchestra
     {
         $errors = $this->findErrors(realpath($filename));
 
-        return collect($errors['messages'] ?? [])->mapWithKeys(function ($message) {
-            return [$message['line'] => $message['message']];
-        })->toArray();
+        return collect($errors['messages'] ?? [])->mapWithKeys(fn ($message) => [$message['line'] => $message['message']])->toArray();
     }
 }

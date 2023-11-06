@@ -10,7 +10,6 @@ use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeCombinator;
-use function get_class;
 
 class RequestDateExtension implements DynamicMethodReturnTypeExtension
 {
@@ -29,6 +28,6 @@ class RequestDateExtension implements DynamicMethodReturnTypeExtension
         MethodCall $methodCall,
         Scope $scope,
     ): Type {
-        return TypeCombinator::addNull(new ObjectType(get_class(now())));
+        return TypeCombinator::addNull(new ObjectType(now()::class));
     }
 }
