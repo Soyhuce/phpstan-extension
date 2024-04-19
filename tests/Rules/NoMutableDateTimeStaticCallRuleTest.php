@@ -17,8 +17,8 @@ class NoMutableDateTimeStaticCallRuleTest extends RulesTest
         $errors = $this->findErrorsByLine(__DIR__ . '/../Fixtures/NoMutableDateTimeStaticCall.php');
 
         $this->assertEquals([
-            11 => 'Static calls of mutable DateTime is forbidden, currently using DateTime.',
-            12 => 'Static calls of mutable DateTime is forbidden, currently using Carbon\Carbon.',
+            9 => 'Static calls of mutable DateTime is forbidden, currently using DateTime.',
+            10 => 'Static calls of mutable DateTime is forbidden, currently using Carbon\Carbon.',
         ], $errors);
     }
 }
