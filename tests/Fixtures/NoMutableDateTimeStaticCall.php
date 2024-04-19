@@ -2,6 +2,8 @@
 
 namespace Soyhuce\PhpstanExtension\Tests\Fixtures;
 
+use function is_object;
+
 class NoMutableDateTimeStaticCall
 {
     public function run(): bool
@@ -9,7 +11,7 @@ class NoMutableDateTimeStaticCall
         $start = \DateTime::createFromFormat('Y-m-d', '2021-01-01');
         $end = \Carbon\Carbon::createFromFormat('Y-m-d', '2021-01-01');
 
-        return $end !== false && $end->isAfter($start);
+        return is_object($start) && is_object($end) && $end->isAfter($start);
     }
 
     public function runImmutable(): bool
@@ -17,6 +19,6 @@ class NoMutableDateTimeStaticCall
         $start = \DateTimeImmutable::createFromFormat('Y-m-d', '2021-01-01');
         $end = \Carbon\CarbonImmutable::createFromFormat('Y-m-d', '2021-01-01');
 
-        return $end !== false && $end->isAfter($start);
+        return is_object($start) && is_object($end) && $end->isAfter($start);
     }
 }
