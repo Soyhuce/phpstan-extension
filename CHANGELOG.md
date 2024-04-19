@@ -2,6 +2,16 @@
 
 All notable changes to `phpstan-extension` will be documented in this file.
 
+## 1.1.0 - 2024-04-19
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.0.0 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/21
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/20
+* Laravel 11 and Carbon 3 support by @bastien-phi in https://github.com/Soyhuce/phpstan-extension/pull/22
+
+**Full Changelog**: https://github.com/Soyhuce/phpstan-extension/compare/1.0.0...1.1.0
+
 ## 1.0.0 - 2023-11-24
 
 ### What's Changed
