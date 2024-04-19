@@ -29,7 +29,7 @@ class CarbonCopyRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Expr\MethodCall $node
+     * @param MethodCall $node
      * @return array<string>
      */
     public function processNode(Node $node, Scope $scope): array

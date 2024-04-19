@@ -19,7 +19,7 @@ class NoMutableDateTimeStaticCallRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Expr\StaticCall $node
+     * @param StaticCall $node
      * @return array<string>
      */
     public function processNode(Node $node, Scope $scope): array

@@ -19,7 +19,7 @@ class NoNewMutableDateTimeRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Expr\New_ $node
+     * @param New_ $node
      * @return array<string>
      */
     public function processNode(Node $node, Scope $scope): array

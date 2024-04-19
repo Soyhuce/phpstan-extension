@@ -27,7 +27,7 @@ class NoAliasUseRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Stmt\UseUse $node
+     * @param UseUse $node
      * @return array<string>
      */
     public function processNode(Node $node, Scope $scope): array
