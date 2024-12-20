@@ -23,6 +23,9 @@ jobs:
         exclude:
           - php: 8.4
             stability: prefer-lowest
+          - php: 8.4
+            carbon: ^2.0
+
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - C${{ matrix.carbon }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
