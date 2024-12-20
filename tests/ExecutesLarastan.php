@@ -3,6 +3,7 @@
 namespace Soyhuce\PhpstanExtension\Tests;
 
 use function dirname;
+use function sprintf;
 
 trait ExecutesLarastan
 {

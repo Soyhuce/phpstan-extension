@@ -7,6 +7,8 @@ use PhpParser\Node;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleError;
+use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\Rules\RuleLevelHelper;
 use PHPStan\Type\ErrorType;
 use PHPStan\Type\ObjectType;
@@ -30,7 +32,7 @@ class CarbonCopyRule implements Rule
 
     /**
      * @param MethodCall $node
-     * @return array<string>
+     * @return list<RuleError>
      */
     public function processNode(Node $node, Scope $scope): array
     {
@@ -67,7 +69,9 @@ class CarbonCopyRule implements Rule
         }
 
         return [
-            "Usage of \\Carbon\\CarbonInterface::{$name}() is prohibited. You should use CarbonImmutable and remove {$name}() call.",
+            RuleErrorBuilder::message("Usage of \\Carbon\\CarbonInterface::{$name}() is prohibited. You should use CarbonImmutable and remove {$name}() call.")
+                ->identifier('carbon.copy')
+                ->build(),
         ];
     }
 }

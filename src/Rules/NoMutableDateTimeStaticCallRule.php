@@ -6,13 +6,21 @@ use DateTime;
 use PhpParser\Node;
 use PhpParser\Node\Expr\StaticCall;
 use PHPStan\Analyser\Scope;
+use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleError;
+use PHPStan\Rules\RuleErrorBuilder;
 
 /**
  * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Expr\StaticCall>
  */
 class NoMutableDateTimeStaticCallRule implements Rule
 {
+    public function __construct(
+        private ReflectionProvider $reflectionProvider,
+    ) {
+    }
+
     public function getNodeType(): string
     {
         return StaticCall::class;
@@ -20,7 +28,7 @@ class NoMutableDateTimeStaticCallRule implements Rule
 
     /**
      * @param StaticCall $node
-     * @return array<string>
+     * @return list<RuleError>
      */
     public function processNode(Node $node, Scope $scope): array
     {
@@ -35,16 +43,14 @@ class NoMutableDateTimeStaticCallRule implements Rule
         }
 
         return [
-            "Static calls of mutable DateTime is forbidden, currently using {$class}.",
+            RuleErrorBuilder::message("Static calls of mutable DateTime is forbidden, currently using {$class}.")
+                ->identifier('mutable.datetime.static.call')
+                ->build(),
         ];
     }
 
     private function isAllowed(string $class): bool
     {
-        if ($class === DateTime::class) {
-            return false;
-        }
-
-        return !is_subclass_of($class, DateTime::class);
+        return !$this->reflectionProvider->getClass($class)->is(DateTime::class);
     }
 }
