@@ -2,6 +2,16 @@
 
 All notable changes to `phpstan-extension` will be documented in this file.
 
+## 2.0.0 - 2024-12-20
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/23
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/24
+* Phpstan 2 by @bastien-phi in https://github.com/Soyhuce/phpstan-extension/pull/25
+
+**Full Changelog**: https://github.com/Soyhuce/phpstan-extension/compare/1.1.0...2.0.0
+
 ## 1.1.0 - 2024-04-19
 
 ### What's Changed
