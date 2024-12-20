@@ -4,41 +4,49 @@ namespace Soyhuce\PhpstanExtension\Rules;
 
 use DateTime;
 use PhpParser\Node;
-use PhpParser\Node\Stmt\UseUse;
+use PhpParser\Node\UseItem;
 use PHPStan\Analyser\Scope;
+use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleError;
+use PHPStan\Rules\RuleErrorBuilder;
 
 /**
  * @implements \PHPStan\Rules\Rule<\PhpParser\Node\Stmt\UseUse>
  */
 class NoMutableDateTimeUseRule implements Rule
 {
+    public function __construct(
+        private ReflectionProvider $reflectionProvider,
+    ) {
+    }
+
     public function getNodeType(): string
     {
-        return UseUse::class;
+        return UseItem::class;
     }
 
     /**
-     * @param UseUse $node
-     * @return array<string>
+     * @param UseItem $node
+     * @return list<RuleError>
      */
     public function processNode(Node $node, Scope $scope): array
     {
-        $usedClass = $node->name->toString();
+        $class = $node->name->toString();
 
-        if ($this->isAllowed($usedClass)) {
+        if ($this->isAllowed($class)) {
             return [];
         }
 
-        return ["Usage of mutable DateTime is forbidden, currently using {$usedClass}."];
+        return [
+            RuleErrorBuilder::message("Usage of mutable DateTime is forbidden, currently using {$class}.")
+                ->identifier('mutable.datetime.use')
+                ->build(),
+        ];
     }
 
     private function isAllowed(string $class): bool
     {
-        if ($class === DateTime::class) {
-            return false;
-        }
-
-        return !is_subclass_of($class, DateTime::class);
+        return !$this->reflectionProvider->getClass($class)->is(DateTime::class);
     }
 }
