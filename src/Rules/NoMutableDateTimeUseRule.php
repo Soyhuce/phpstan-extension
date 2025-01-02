@@ -34,6 +34,10 @@ class NoMutableDateTimeUseRule implements Rule
     {
         $class = $node->name->toString();
 
+        if (!$this->reflectionProvider->hasClass($class)) {
+            return [];
+        }
+
         if ($this->isAllowed($class)) {
             return [];
         }
