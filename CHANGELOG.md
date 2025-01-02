@@ -2,6 +2,14 @@
 
 All notable changes to `phpstan-extension` will be documented in this file.
 
+## 2.0.1 - 2025-01-02
+
+### What's Changed
+
+* Fix mutable datetime rules by @bastien-phi in https://github.com/Soyhuce/phpstan-extension/pull/26
+
+**Full Changelog**: https://github.com/Soyhuce/phpstan-extension/compare/2.0.0...2.0.1
+
 ## 2.0.0 - 2024-12-20
 
 ### What's Changed
