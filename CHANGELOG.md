@@ -2,6 +2,15 @@
 
 All notable changes to `phpstan-extension` will be documented in this file.
 
+## 2.1.0 - 2025-02-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/Soyhuce/phpstan-extension/pull/27
+* Run tests with Laravel 12 by @bastien-phi in https://github.com/Soyhuce/phpstan-extension/pull/28
+
+**Full Changelog**: https://github.com/Soyhuce/phpstan-extension/compare/2.0.1...2.1.0
+
 ## 2.0.1 - 2025-01-02
 
 ### What's Changed
