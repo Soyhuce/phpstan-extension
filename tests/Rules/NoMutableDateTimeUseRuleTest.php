@@ -2,16 +2,14 @@
 
 namespace Soyhuce\PhpstanExtension\Tests\Rules;
 
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
 use Soyhuce\PhpstanExtension\Tests\RulesTest;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class NoMutableDateTimeUseRuleTest extends RulesTest
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function dateTimeUseCannotBeUsed(): void
     {
         $errors = $this->findErrorsByLine(__DIR__ . '/../Fixtures/NoMutableDateTimeUse.php');
