@@ -5,3 +5,11 @@ services:
   - class: Soyhuce\PhpstanExtension\ReturnTypes\RequestDateExtension
     tags:
       - phpstan.broker.dynamicMethodReturnTypeExtension
+  
+  - class: Larastan\Larastan\ReturnTypes\TransHelperReturnTypeExtension
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+
+parameters:
+  bootstrapFiles:
+    - bootstrap.php
