@@ -2,6 +2,14 @@
 
 All notable changes to `phpstan-extension` will be documented in this file.
 
+## 2.2.0 - 2026-03-02
+
+### What's Changed
+
+* Add support for PHP 8.5 in https://github.com/Soyhuce/phpstan-extension/pull/36
+
+**Full Changelog**: https://github.com/Soyhuce/phpstan-extension/compare/2.1.0...2.2.0
+
 ## 2.1.0 - 2025-02-24
 
 ### What's Changed
