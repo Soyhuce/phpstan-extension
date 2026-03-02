@@ -3,13 +3,14 @@
 namespace Soyhuce\PhpstanExtension\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use function dirname;
 
-/**
- * @coversNothing
- */
+#[CoversNothing]
 class FeatureTest extends Orchestra
 {
     use ExecutesLarastan;
@@ -35,11 +36,8 @@ class FeatureTest extends Orchestra
         return $calls;
     }
 
-    /**
-     * @dataProvider getFeatures
-     *
-     * @test
-     */
+    #[Test]
+    #[DataProvider('getFeatures')]
     public function features(string $file): void
     {
         $configFile = dirname($file) . '/phpstan-tests.neon';
